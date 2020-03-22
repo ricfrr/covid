@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="script_marche.js"></script>
     <script type="text/javascript" src="navbar.js"></script>
+
     <link rel="stylesheet" href="style.css">
 
-
+    <script src="https://cdn.rawgit.com/bm-w/d3/master/d3.js"></script>
 </head>
 
 <body>
 
     <div class="m_navbar m_navbar_animation" id="responsive_navbar">
-        <div href="javascript:void(0);"  class="icon" onclick="response()" ><i class="material-icons"  id="spin_arrow">arrow_upward</i></div>
+        <div href="javascript:void(0);" class="icon" onclick="response()"><i class="material-icons"
+                id="spin_arrow">arrow_upward</i></div>
         <a href="./index.html" > Italia</a>
-        <a href="./marche.html" class="active"  >Marche</a>
-        <!--<a href="#">Ancona</a>
-        <a href="#contact">Pesaro Urbino</a>
-        <a href="#contact">Fermo</a>
-        <a href="#contact">Macerata</a>-->
+        <a href="./marche.html" class="active">Marche</a>
     </div>
-
-
-
     <div class='container-fluid'>
         <div class="row">
             <div class="col-md-12">
@@ -37,17 +35,76 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-sm-12  ">
-                <div class="description">Numero di casi totali registrati nelle Marche dall'inizio dell'epidemia</div>
-                <div class="plt_container"><div class="plot_dimension"><canvas class="plot" id="trend" ></canvas></div> </div>
+            <div class="col-sm-6  container">
+                <div class="square_container">
+                    <div class="plot_container"><canvas id="general_situation"></canvas></div>
+                </div>
             </div>
+        </div>
 
-            <div class="col-lg-12 col-sm-12 ">
-                <div class="description">Scala logaritmica dei casi nelle marche </div>
-                <div class="plt_container"><div class="plot_dimension"> <canvas class="plot" id="trend_log" ></canvas></div> </div>
-            </div>    
+
+        <div class="row">
+            <div class="col-sm-6 container">
+                <div class="square_container">
+                    <div class="data_text_container">
+                        <div class="header_data">
+                            Casi Totali
+                        </div>
+                        <div class="data" id="data_total_case">
+                        </div>
+                        <div class="prev_day_change" id="data_total_case_change">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6  container">
+                <div class="square_container">
+                    <div class="data_text_container">
+                        <div class="header_data">
+                            Positivi
+                        </div>
+                        <div class="data" id="data_positive">
+                        </div>
+                        <div class="prev_day_change" id="data_positive_change">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 container">
+                <div class="square_container">
+                    <div class="data_text_container">
+                        <div class="header_data">
+                            Guariti
+                        </div>
+                        <div class="data" id="data_recovered">
+                        </div>
+                        <div class="prev_day_change" id="data_recovered_change">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6  container">
+                <div class="square_container">
+                    <div class="data_text_container">
+                        <div class="header_data">
+                            Deceduti
+                        </div>
+                        <div class="data" id="data_death">
+                        </div>
+                        <div class="prev_day_change" id="data_death_change">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pad">
+
         </div>
     </div>
+
 </body>
-    
+
 </html>
