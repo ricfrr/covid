@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="script_marche.js"></script>
+    <script type="text/javascript" src="navbar.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div class="m_navbar m_navbar_animation" id="responsive_navbar">
+        <div href="javascript:void(0);"  class="icon" onclick="response()" ><i class="material-icons"  id="spin_arrow">arrow_upward</i></div>
+        <a href="./index.html" > Italia</a>
+        <a href="./marche.html" class="active"  >Marche</a>
+        <!--<a href="#">Ancona</a>
+        <a href="#contact">Pesaro Urbino</a>
+        <a href="#contact">Fermo</a>
+        <a href="#contact">Macerata</a>-->
+    </div>
+
+
+
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title_region">Casi nelle Marche</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12  ">
+                <div class="description">Numero di casi totali registrati nelle Marche dall'inizio dell'epidemia</div>
+                <div class="plt_container"><div class="plot_dimension"><canvas class="plot" id="trend" ></canvas></div> </div>
+            </div>
+
+            <div class="col-lg-12 col-sm-12 ">
+                <div class="description">Scala logaritmica dei casi nelle marche </div>
+                <div class="plt_container"><div class="plot_dimension"> <canvas class="plot" id="trend_log" ></canvas></div> </div>
+            </div>    
+        </div>
+    </div>
+</body>
+    
+</html>
