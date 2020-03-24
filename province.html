@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="script_marche.js"></script>
+    <script type="text/javascript" src="script_province.js"></script>
     <script type="text/javascript" src="navbar.js"></script>
 
     <link rel="stylesheet" href="style.css">
@@ -41,21 +41,14 @@
         <div href="javascript:void(0);" class="icon" onclick="response()"><i class="material-icons"
                 id="spin_arrow">arrow_upward</i></div>
         <a href="./index.html"> Italia</a>
-        <a href="./marche.html" class="active">Marche</a>
-        <a href="./province.html">Province</a>
+        <a href="./marche.html" >Marche</a>
+        <a href="./province.html" class="active">Province</a>
         <a href="./data_info.html">Data</a>
     </div>
     <div class='container-fluid'>
         <div class="row">
             <div class="col-md-12">
-                <div class="title_region">Casi nelle Marche</div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6  container">
-                <div class="square_container">
-                    <div class="plot_container" style="height: 100%;"><canvas id="general_situation"></canvas></div>
-                </div>
+                <div class="title_region">Casi per Provincia</div>
             </div>
         </div>
 
@@ -65,11 +58,11 @@
                 <div class="square_container">
                     <div class="data_text_container">
                         <div class="header_data">
-                            Casi Totali
+                            Ancona
                         </div>
-                        <div class="data" id="data_total_case">
+                        <div class="data" id="data_total_case_ancona">
                         </div>
-                        <div class="prev_day_change" id="data_total_case_change">
+                        <div class="prev_day_change" id="data_total_case_change_ancona">
                         </div>
                     </div>
                 </div>
@@ -78,11 +71,11 @@
                 <div class="square_container">
                     <div class="data_text_container">
                         <div class="header_data">
-                            Positivi
+                            Pesaro e Urbino
                         </div>
-                        <div class="data" id="data_positive">
+                        <div class="data" id="data_total_case_pu">
                         </div>
-                        <div class="prev_day_change" id="data_positive_change">
+                        <div class="prev_day_change" id="data_total_case_change_pu">
                         </div>
                     </div>
 
@@ -94,11 +87,11 @@
                 <div class="square_container">
                     <div class="data_text_container">
                         <div class="header_data">
-                            Guariti
+                            Macerata
                         </div>
-                        <div class="data" id="data_recovered">
+                        <div class="data" id="data_total_case_macerata">
                         </div>
-                        <div class="prev_day_change" id="data_recovered_change">
+                        <div class="prev_day_change" id="data_total_case_change_macerata">
                         </div>
                     </div>
                 </div>
@@ -107,20 +100,35 @@
                 <div class="square_container">
                     <div class="data_text_container">
                         <div class="header_data">
-                            Deceduti
+                            Ascoli Piceno
                         </div>
-                        <div class="data" id="data_death">
+                        <div class="data" id="data_total_case_ascoli">
                         </div>
-                        <div class="prev_day_change" id="data_death_change">
+                        <div class="prev_day_change" id="data_total_case_change_ascoli">
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
         <div class='row'>
+            <div class="col-sm-6  container">
+                <div class="square_container">
+                    <div class="data_text_container">
+                        <div class="header_data">
+                            Fermo
+                        </div>
+                        <div class="data" id="data_total_case_fermo">
+                        </div>
+                        <div class="prev_day_change" id="data_total_case_change_fermo">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <div class="col-sm-6 container_button ">
                 <div class="power_stat_button">
-                    <a href="./marche_details.html" style="color: inherit;">Statistiche dettagliate ></a>
+                    <a href="./province_details.html" style="color: inherit;">Statistiche dettagliate ></a>
                 </div>
             </div>
         </div>

@@ -32,8 +32,8 @@ body {
   height: 75%;
   width: auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .power_stat_button{
@@ -88,7 +88,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 35vh;
+  height: 37vh;
 }
 
 .container_button{

@@ -41,7 +41,7 @@ window.onload = function () {
 
                 date = new Date(element.data)
                 month = date.getMonth() + 1
-                list_date.push(date.getDate() + "-" + month)
+                list_date.push(String(date.getDate()) + "-" + String(month))
             });
 
 

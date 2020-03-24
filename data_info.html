@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>covid-marche</title>
+    <meta name="author" content="Riccardo Franceschini">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161739993-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-161739993-1');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+        integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="navbar.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon/logo_transparent.jpg">
+
+
+    <script src="https://cdn.rawgit.com/bm-w/d3/master/d3.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="m_navbar m_navbar_animation" id="responsive_navbar">
+        <div href="javascript:void(0);" class="icon" onclick="response()"><i class="material-icons"
+                id="spin_arrow">arrow_upward</i></div>
+        <a href="./index.html"> Italia</a>
+        <a href="./marche.html">Marche</a>
+        <a href="./province.html">Province</a>
+        <a href="./data_info.html" class="active">Data</a>
+    </div>
+    <div class='container-fluid'>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title_region">Informazione dati</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6  container">
+                <div class="square_container">
+                    <div class="data" style="font-size: 15pt;">
+                        I dati provengono dalla Presidenza del Consiglio dei Ministri - Dipartimento della Protezione
+                        Civile,
+                        per la versione originale dei dati <a href="https://github.com/pcm-dpc/COVID-19">clicca qui.</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="pad">
+
+        </div>
+    </div>
+
+</body>
+
+</html>
