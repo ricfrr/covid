@@ -156,7 +156,7 @@ window.onload = function () {
                     labels: list_date,
                     datasets: [{
                         label: '# Ascoli Piceno',
-                        data: list_cases_pu,
+                        data: list_cases_ascoli,
                         borderColor: "#e90b3a",
                         borderWidth: 1
                     }
