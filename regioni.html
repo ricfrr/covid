@@ -4,6 +4,12 @@
 <head>
     <title>covid-marche</title>
     <meta name="author" content="Riccardo Franceschini">
+
+    <meta http-equiv=“Pragma” content=”no-cache”>
+    <meta http-equiv=“Expires” content=”-1″>
+    <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-161739993-1"></script>
     <script>
@@ -14,8 +20,6 @@
         gtag('config', 'UA-161739993-1');
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
         integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -25,14 +29,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
+    <script type="text/javascript" src="js/script_regioni.js"></script>
     <script type="text/javascript" src="js/navbar.js"></script>
 
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" href="icon/logo_transparent.jpg">
 
-    
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"> 
+
+    <script src="https://cdn.rawgit.com/bm-w/d3/master/d3.js"></script>
+
 </head>
 
 <body>
@@ -43,28 +48,22 @@
         <a href="./index.html"> Italia</a>
         <a href="./marche.html">Marche</a>
         <a href="./province.html">Province</a>
-        <a href="./regioni.html">Altre Regioni</a>
-        <a href="./data_info.html" class="active">Data</a>
+        <a href="./regioni.html" class="active">Altre Regioni</a>
+        <a href="./data_info.html">Data</a>
     </div>
     <div class='container-fluid'>
         <div class="row">
-            <div class="col-md-12">
-                <div class="title_region">Informazione dati</div>
+            <div class="col-md-6">
+                <div class="title_region">Casi per Regione</div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6  container">
-                <div class="square_container">
-                    <div class="data" style="font-size: 15pt;">
-                        I dati provengono dalla Presidenza del Consiglio dei Ministri - Dipartimento della Protezione
-                        Civile,
-                        per la versione originale dei dati <a href="https://github.com/pcm-dpc/COVID-19">clicca qui.</a>
-
-                    </div>
-                </div>
+            <div class="col-md-6">
+                <div class="aggiornamento_text" id="data_update"></div>
             </div>
         </div>
 
+        <div id="region_data"></div>
+
+        
 
         <div class="pad">
 

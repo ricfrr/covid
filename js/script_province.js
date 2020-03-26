@@ -15,16 +15,21 @@ window.onload = function () {
     list_cases_macerata = []
     log_cases_macerata = []
 
+    list_date = []
 
     xmlhttp.onreadystatechange = function () {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            console.log(data)
             data.forEach(element => {
                 if (element.denominazione_provincia == "Ancona") {
                     list_cases_ancona.push(element.totale_casi)
                     log_cases_ancona.push(Math.log(parseInt(element.totale_casi)))
+
+                    date = new Date(element.data)
+                    month = date.getMonth() + 1
+                    list_date.push(date.getDate() + "-" + month)
+
                 }
                 if (element.denominazione_provincia == "Pesaro e Urbino") {
                     list_cases_pu.push(element.totale_casi)
@@ -43,6 +48,8 @@ window.onload = function () {
                     log_cases_macerata.push(Math.log(parseInt(element.totale_casi)))
                 }
             });
+
+            document.getElementById("data_update").innerHTML = "Dati aggiornati al : "+ String(list_date[list_date.length-1])
 
 
             document.getElementById("data_total_case_ancona").innerHTML = list_cases_ancona[list_cases_ancona.length-1]

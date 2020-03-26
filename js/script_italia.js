@@ -17,7 +17,6 @@ window.onload = function () {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            console.log(data)
             data.forEach(element => {
                 list_cases.push(element.totale_casi)
                 log_cases.push(Math.log(parseInt(element.totale_casi)))
@@ -49,6 +48,8 @@ window.onload = function () {
                     }]
                 }
             })
+
+            document.getElementById("data_update").innerHTML = "Dati aggiornati al : "+ String(list_date[list_date.length-1])
             
             document.getElementById("data_total_case").innerHTML = list_cases[list_cases.length-1]
             diff_total_case = list_cases[list_cases.length-1] - list_cases[list_cases.length-2]
@@ -58,7 +59,7 @@ window.onload = function () {
             diff_total_case = list_actual_positive[list_actual_positive.length-1] - list_actual_positive[list_actual_positive.length-2]
             pos = "+"
             if (diff_total_case < 0){
-                pos = "-"
+                pos = ""
             }
             document.getElementById("data_positive_change").innerHTML = "("+pos+ String(diff_total_case) + ")"
 

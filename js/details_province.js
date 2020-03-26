@@ -21,7 +21,6 @@ window.onload = function () {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            console.log(data)
             data.forEach(element => {
                 if (element.denominazione_provincia == "Ancona") {
                     list_cases_ancona.push(element.totale_casi)

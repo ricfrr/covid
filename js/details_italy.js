@@ -21,7 +21,6 @@ window.onload = function () {
 
         if (this.readyState == 4 && this.status == 200) {
             var data = JSON.parse(this.responseText);
-            console.log(data)
             data.forEach(element => {
                 list_cases.push(element.totale_casi)
                 log_cases.push(Math.log(parseInt(element.totale_casi)))
@@ -187,7 +186,7 @@ window.onload = function () {
             change = list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]
             var sign = "+"
             if (change < 0){
-                sign = "-"
+                sign = ""
             }
 
             document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " ("+sign+ + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
@@ -221,7 +220,7 @@ window.onload = function () {
             change = list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]
             var sign = "+"
             if (change < 0){
-                sign = "-"
+                sign = ""
             }
 
             document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " ("+sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"
@@ -259,7 +258,7 @@ window.onload = function () {
             change_death = death_ratio_list[death_ratio_list.length - 1] - death_ratio_list[death_ratio_list.length - 2]
             var sign = "+"
             if (change_death < 0){
-                sign = "-"
+                sign = ""
             }
             document.getElementById("data_mortalita_change").innerHTML = "%"+death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " ("+sign+ + String(change_death.toFixed(2)) + ")"
 

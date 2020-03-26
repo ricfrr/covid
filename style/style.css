@@ -59,11 +59,20 @@ body {
   max-height: 100% !important;
 }
 
+.aggiornamento_text{
+  font-size: 20pt;
+  color: gainsboro;
+}
+
 
 @media screen and (max-width: 600px) {
     .title_region{
         font-size: 30pt;
         font-weight: bold;
+    }
+    .aggiornamento_text{
+      font-size: 15pt;
+      color: gainsboro;
     }
     .description{
         font-size: 10pt;
