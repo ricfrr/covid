@@ -20,10 +20,10 @@ window.onload = function () {
     list_nuovi_positivi = []
 
     var queryDict = {}
-    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+    location.search.substr(1).split("&").forEach(function (item) { queryDict[item.split("=")[0]] = item.split("=")[1] })
 
     region_name = decodeURI(queryDict.region)
-    document.getElementById("name_region").innerHTML = "Stats "+ region_name
+    document.getElementById("name_region").innerHTML = "Stats " + region_name
     console.log(queryDict)
 
     xmlhttp.onreadystatechange = function () {
@@ -52,7 +52,7 @@ window.onload = function () {
 
                     date = new Date(element.data)
                     month = date.getMonth() + 1
-                list_date.push(String(date.getDate()) + "-" + String(month))
+                    list_date.push(String(date.getDate()) + "-" + String(month))
                 }
             });
 
@@ -170,138 +170,174 @@ window.onload = function () {
 
             document.getElementById("data_tamponi_change").innerHTML = list_tamponi[list_tamponi.length - 1] + " (+" + String(list_tamponi[list_tamponi.length - 1] - list_tamponi[list_tamponi.length - 2]) + ")"
 
-           // terapia intensiva 
-           var ctx_log_case = document.getElementById('terapia_plot').getContext('2d');
-           var chart_log_case = new Chart(ctx_log_case, {
-               type: 'line',
-               data: {
-                   labels: list_date,
-                   datasets: [{
-                       label: '# terapia intensiva',
-                       data: list_terapia_intensiva,
-                       borderColor: "#a0ff03",
-                       borderWidth: 1
-                   }
-                   ]
-               },
-               options: {
-                   scales: {
-                       yAxes: [{
-                           ticks: {
-                               beginAtZero: true
-                           }
-                       }]
-                   }
-               }
-           })
-
-           
-           change = list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]
-           var sign = "+"
-           if (change < 0){
-               sign = "-"
-           }
-
-           document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " ("+sign+ + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
+            // terapia intensiva 
+            var ctx_log_case = document.getElementById('terapia_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# terapia intensiva',
+                        data: list_terapia_intensiva,
+                        borderColor: "#a0ff03",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
 
 
-           // domiciliare 
-           var ctx_log_case = document.getElementById('domiciliare_plot').getContext('2d');
-           var chart_log_case = new Chart(ctx_log_case, {
-               type: 'line',
-               data: {
-                   labels: list_date,
-                   datasets: [{
-                       label: '# domiciliare',
-                       data: list_domiciliare,
-                       borderColor: "#1ad5de",
-                       borderWidth: 1
-                   }
-                   ]
-               },
-               options: {
-                   scales: {
-                       yAxes: [{
-                           ticks: {
-                               beginAtZero: true
-                           }
-                       }]
-                   }
-               }
-           })
+            change = list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]
+            var sign = "+"
+            if (change < 0) {
+                sign = "-"
+            }
 
-           change = list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]
-           var sign = "+"
-           if (change < 0){
-               sign = "-"
-           }
-
-           document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " ("+sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"
-
-           // mortality
-           death_ratio_list = []
-           for(var i = 0, length = list_cases.length; i < length; i++){
-               death_ratio_list.push( (list_death[i]/list_cases[i]) * 100 )
-           }
-
-           var ctx_log_case = document.getElementById('mortalita_plot').getContext('2d');
-           var chart_log_case = new Chart(ctx_log_case, {
-               type: 'line',
-               data: {
-                   labels: list_date,
-                   datasets: [{
-                       label: '# mortalità',
-                       data: death_ratio_list,
-                       borderColor: "#f5f5f5",
-                       borderWidth: 1
-                   }
-                   ]
-               },
-               options: {
-                   scales: {
-                       yAxes: [{
-                           ticks: {
-                               beginAtZero: true
-                           }
-                       }]
-                   }
-               }
-           })
-
-           change_death = death_ratio_list[death_ratio_list.length - 1] - death_ratio_list[death_ratio_list.length - 2]
-           var sign = "+"
-           if (change_death < 0){
-               sign = ""
-           }
-           document.getElementById("data_mortalita_change").innerHTML = "%"+death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " ("+sign+ + String(change_death.toFixed(2)) + ")"
+            document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " (" + sign + + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
 
 
-           // new positive cases
-           document.getElementById("nuovi_pos_change").innerHTML =   "(+"+list_nuovi_positivi[list_nuovi_positivi.length-1]+ ")"
+            // domiciliare 
+            var ctx_log_case = document.getElementById('domiciliare_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# domiciliare',
+                        data: list_domiciliare,
+                        borderColor: "#1ad5de",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
 
-           var ctx_log_case = document.getElementById('nuovi_pos_plot').getContext('2d');
-           var chart_log_case = new Chart(ctx_log_case, {
-               type: 'line',
-               data: {
-                   labels: list_date,
-                   datasets: [{
-                       label: '# Nuovi Positivi',
-                       data: list_nuovi_positivi,
-                       borderColor: "#a0ff03",
-                       borderWidth: 1
-                   }
-                   ]
-               },
-               options: {
-                   scales: {
-                       yAxes: [{
-                           ticks: {
-                               beginAtZero: true
-                           }
-                       }]
-                   }
-               }
-           })
+            change = list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]
+            var sign = "+"
+            if (change < 0) {
+                sign = "-"
+            }
+
+            document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " (" + sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"
+
+            // mortality
+            death_ratio_list = []
+            for (var i = 0, length = list_cases.length; i < length; i++) {
+                death_ratio_list.push((list_death[i] / list_cases[i]) * 100)
+            }
+
+            var ctx_log_case = document.getElementById('mortalita_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# mortalità',
+                        data: death_ratio_list,
+                        borderColor: "#f5f5f5",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+            change_death = death_ratio_list[death_ratio_list.length - 1] - death_ratio_list[death_ratio_list.length - 2]
+            var sign = "+"
+            if (change_death < 0) {
+                sign = ""
+            }
+            document.getElementById("data_mortalita_change").innerHTML = "%" + death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " (" + sign + + String(change_death.toFixed(2)) + ")"
+
+
+            // new positive cases
+            sign="+"
+            if (list_nuovi_positivi[list_nuovi_positivi.length - 1]<0){
+                sign = "-"
+            }
+            document.getElementById("nuovi_pos_change").innerHTML = "("+sign + list_nuovi_positivi[list_nuovi_positivi.length - 1] + ")"
+
+            var ctx_log_case = document.getElementById('nuovi_pos_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# Nuovi Positivi',
+                        data: list_nuovi_positivi,
+                        borderColor: "#a0ff03",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+
+            // new cases 
+            incremento_cases = []
+            for (var i = 1, length = list_cases.length; i < length; i++) {
+                incremento_cases.push(list_cases[i] - list_cases[i - 1])
+            }
+            document.getElementById("incremento_change").innerHTML = "(+" + incremento_cases[incremento_cases.length - 1] + ")"
+
+            var ctx_log_case = document.getElementById('incremento_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# Nuovi Casi',
+                        data: incremento_cases,
+                        borderColor: "#e90b3a",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
 
 
         }

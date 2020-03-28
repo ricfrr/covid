@@ -186,14 +186,14 @@ window.onload = function () {
                 }
             })
 
-            
+
             change = list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]
             var sign = "+"
-            if (change < 0){
+            if (change < 0) {
                 sign = ""
             }
 
-            document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " ("+sign+ + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
+            document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " (" + sign + + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
 
 
             // domiciliare 
@@ -223,16 +223,16 @@ window.onload = function () {
 
             change = list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]
             var sign = "+"
-            if (change < 0){
+            if (change < 0) {
                 sign = ""
             }
 
-            document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " ("+sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"
+            document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " (" + sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"
 
             // mortality
             death_ratio_list = []
-            for(var i = 0, length = list_cases.length; i < length; i++){
-                death_ratio_list.push( (list_death[i]/list_cases[i]) * 100 )
+            for (var i = 0, length = list_cases.length; i < length; i++) {
+                death_ratio_list.push((list_death[i] / list_cases[i]) * 100)
             }
 
             var ctx_log_case = document.getElementById('mortalita_plot').getContext('2d');
@@ -261,13 +261,17 @@ window.onload = function () {
 
             change_death = death_ratio_list[death_ratio_list.length - 1] - death_ratio_list[death_ratio_list.length - 2]
             var sign = "+"
-            if (change_death < 0){
+            if (change_death < 0) {
                 sign = ""
             }
-            document.getElementById("data_mortalita_change").innerHTML = "%"+death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " ("+sign+ + String(change_death.toFixed(2)) + ")"
+            document.getElementById("data_mortalita_change").innerHTML = "%" + death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " (" + sign + + String(change_death.toFixed(2)) + ")"
 
             // new positive cases
-            document.getElementById("nuovi_pos_change").innerHTML =   "(+"+list_nuovi_positivi[list_nuovi_positivi.length-1]+ ")"
+            sign="+"
+            if (list_nuovi_positivi[list_nuovi_positivi.length - 1]<0){
+                sign = "-"
+            }
+            document.getElementById("nuovi_pos_change").innerHTML = "("+sign + list_nuovi_positivi[list_nuovi_positivi.length - 1] + ")"
 
             var ctx_log_case = document.getElementById('nuovi_pos_plot').getContext('2d');
             var chart_log_case = new Chart(ctx_log_case, {
@@ -278,6 +282,37 @@ window.onload = function () {
                         label: '# Nuovi Positivi',
                         data: list_nuovi_positivi,
                         borderColor: "#a0ff03",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+            // new cases 
+            incremento_cases = []
+            for (var i = 1, length = list_cases.length; i < length; i++) {
+                incremento_cases.push(list_cases[i] - list_cases[i-1])
+            }
+            document.getElementById("incremento_change").innerHTML = "(+" + incremento_cases[incremento_cases.length - 1] + ")"
+
+            var ctx_log_case = document.getElementById('incremento_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# Nuovi Casi',
+                        data: incremento_cases,
+                        borderColor: "#e90b3a",
                         borderWidth: 1
                     }
                     ]

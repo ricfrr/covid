@@ -271,7 +271,11 @@ window.onload = function () {
 
 
             // new positive cases
-            document.getElementById("nuovi_pos_change").innerHTML = "(+" + list_nuovi_positivi[list_nuovi_positivi.length - 1] + ")"
+            sign="+"
+            if (list_nuovi_positivi[list_nuovi_positivi.length - 1]<0){
+                sign = "-"
+            }
+            document.getElementById("nuovi_pos_change").innerHTML = "("+sign + list_nuovi_positivi[list_nuovi_positivi.length - 1] + ")"
 
             var ctx_log_case = document.getElementById('nuovi_pos_plot').getContext('2d');
             var chart_log_case = new Chart(ctx_log_case, {
@@ -282,6 +286,36 @@ window.onload = function () {
                         label: '# Nuovi Positivi',
                         data: list_nuovi_positivi,
                         borderColor: "#a0ff03",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+            // new cases 
+            incremento_cases = []
+            for (var i = 1, length = list_cases.length; i < length; i++) {
+                incremento_cases.push(list_cases[i] - list_cases[i - 1])
+            }
+            document.getElementById("incremento_change").innerHTML = "(+" + incremento_cases[incremento_cases.length - 1] + ")"
+
+            var ctx_log_case = document.getElementById('incremento_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# Nuovi Casi',
+                        data: incremento_cases,
+                        borderColor: "#e90b3a",
                         borderWidth: 1
                     }
                     ]
