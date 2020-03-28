@@ -17,6 +17,8 @@ window.onload = function () {
     list_terapia_intensiva = []
     list_domiciliare = []
 
+    list_nuovi_positivi = []
+
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
 
@@ -45,6 +47,8 @@ window.onload = function () {
                     list_tamponi.push(element.tamponi)
                     list_terapia_intensiva.push(element.terapia_intensiva)
                     list_domiciliare.push(element.isolamento_domiciliare)
+
+                    list_nuovi_positivi.push(element.nuovi_attualmente_positivi)
 
                     date = new Date(element.data)
                     month = date.getMonth() + 1
@@ -271,6 +275,33 @@ window.onload = function () {
            }
            document.getElementById("data_mortalita_change").innerHTML = "%"+death_ratio_list[death_ratio_list.length - 1].toFixed(2) + " ("+sign+ + String(change_death.toFixed(2)) + ")"
 
+
+           // new positive cases
+           document.getElementById("nuovi_pos_change").innerHTML =   "(+"+list_nuovi_positivi[list_nuovi_positivi.length-1]+ ")"
+
+           var ctx_log_case = document.getElementById('nuovi_pos_plot').getContext('2d');
+           var chart_log_case = new Chart(ctx_log_case, {
+               type: 'line',
+               data: {
+                   labels: list_date,
+                   datasets: [{
+                       label: '# Nuovi Positivi',
+                       data: list_nuovi_positivi,
+                       borderColor: "#a0ff03",
+                       borderWidth: 1
+                   }
+                   ]
+               },
+               options: {
+                   scales: {
+                       yAxes: [{
+                           ticks: {
+                               beginAtZero: true
+                           }
+                       }]
+                   }
+               }
+           })
 
 
         }
