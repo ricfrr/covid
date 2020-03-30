@@ -298,7 +298,7 @@ window.onload = function () {
             })
 
             // new cases 
-            incremento_cases = []
+            incremento_cases = [list_cases[0]]
             for (var i = 1, length = list_cases.length; i < length; i++) {
                 incremento_cases.push(list_cases[i] - list_cases[i-1])
             }
@@ -313,6 +313,47 @@ window.onload = function () {
                         label: '# Nuovi Casi',
                         data: incremento_cases,
                         borderColor: "#e90b3a",
+                        borderWidth: 1
+                    }
+                    ]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+            // tamponi/tot cases 
+            tamponi_casi_list = []
+            tamponi_cange = [list_tamponi[0]]
+            for (var i = 1, length = list_tamponi.length; i < length; i++) {
+                tamponi_cange.push( Math.abs(list_tamponi[i] - list_tamponi[i - 1]))
+            }
+
+            for (var i = 0, length = list_tamponi.length; i < length; i++) {
+                ratio = tamponi_cange[i] / incremento_cases[i]
+                if (ratio == NaN){
+                    ratio = 0 
+                }
+                tamponi_casi_list.push(ratio)
+            }
+
+            document.getElementById("tamponi_casi_change").innerHTML = "ogni " + tamponi_casi_list[tamponi_casi_list.length - 1].toFixed(2) + " tamponi un caso (N.B è solo un andamento, i tamponi di oggi sono i casi dei prossimi giorni)"
+
+            var ctx_log_case = document.getElementById('tamponi_casi_plot').getContext('2d');
+            var chart_log_case = new Chart(ctx_log_case, {
+                type: 'line',
+                data: {
+                    labels: list_date,
+                    datasets: [{
+                        label: '# Tamponi/Incremento Casi ',
+                        data: tamponi_casi_list,
+                        borderColor: "#1ad5de",
                         borderWidth: 1
                     }
                     ]
