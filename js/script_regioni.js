@@ -54,7 +54,10 @@ window.onload = function () {
             region_html_list = ""
             regio_c = 0
             for (const [key, value] of Object.entries(cases_region)) {
-
+                url_param = key
+                if (url_param =="Valle d'Aosta"){
+                    url_param = "Valle d%27Aosta"
+                }
                 diff_total_case = value.list_cases[value.list_cases.length - 1] - value.list_cases[value.list_cases.length - 2]
                 if ( regio_c == 0){
                     region_pair += "<div class='row'>"
@@ -70,7 +73,7 @@ window.onload = function () {
                                                     "<div class='prev_day_change'>"+
                                                         "(+" + String(diff_total_case) + ")" + 
                                                     " </div>" + 
-                                                    "<a href='region_details/region_details.html?region="+key+"' " +
+                                                    "<a href='region_details/region_details.html?region="+url_param+"' " +
                                                     "style='color: inherit;'>Statistiche dettagliate ></a>"+
                                                 "</div>"+
                                             "</div> "+
