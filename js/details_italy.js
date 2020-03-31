@@ -27,8 +27,8 @@ window.onload = function () {
                 list_cases.push(element.totale_casi)
                 log_cases.push(Math.log(parseInt(element.totale_casi)))
 
-                list_actual_positive.push(element.totale_attualmente_positivi)
-                log_actual_positive.push(Math.log(parseInt(element.totale_attualmente_positivi)))
+                list_actual_positive.push(element.totale_positivi)
+                log_actual_positive.push(Math.log(parseInt(element.totale_positivi)))
 
                 list_recovered.push(element.dimessi_guariti)
                 log_recovered.push(Math.log(parseInt(element.dimessi_guariti)))
@@ -40,7 +40,7 @@ window.onload = function () {
                 list_terapia_intensiva.push(element.terapia_intensiva)
                 list_domiciliare.push(element.isolamento_domiciliare)
 
-                list_nuovi_positivi.push(element.nuovi_attualmente_positivi)
+                list_nuovi_positivi.push(element.variazione_totale_positivi)
 
                 date = new Date(element.data)
                 month = date.getMonth() + 1

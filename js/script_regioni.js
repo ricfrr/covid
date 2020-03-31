@@ -33,8 +33,8 @@ window.onload = function () {
                     cases_region[element.denominazione_regione].list_cases.push(element.totale_casi)
                     cases_region[element.denominazione_regione].log_cases.push(Math.log(parseInt(element.totale_casi)))
 
-                    cases_region[element.denominazione_regione].list_actual_positive.push(element.totale_attualmente_positivi)
-                    cases_region[element.denominazione_regione].log_actual_positive.push(Math.log(parseInt(element.totale_attualmente_positivi)))
+                    cases_region[element.denominazione_regione].list_actual_positive.push(element.totale_positivi)
+                    cases_region[element.denominazione_regione].log_actual_positive.push(Math.log(parseInt(element.totale_positivi)))
 
                     cases_region[element.denominazione_regione].list_recovered.push(element.dimessi_guariti)
                     cases_region[element.denominazione_regione].log_recovered.push(Math.log(parseInt(element.dimessi_guariti)))
