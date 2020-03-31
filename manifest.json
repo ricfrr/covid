@@ -1,0 +1,14 @@
+{
+    "short_name": "covid-19",
+    "name": "Covid-19", 
+    "description": "Dasboard sulla situazione del virus Covid-19", 
+    "start_url" : "index.html",
+    "icons" : [
+        {"src" : "icon/logo_transparent.jpg", 
+        "type" : "image/jpg",
+        "sizes" : "96x96"
+        }
+    ],
+    "display": "standalone", 
+    "scope" :"/"
+}
