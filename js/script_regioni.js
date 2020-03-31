@@ -58,13 +58,17 @@ window.onload = function () {
                 if (url_param =="Valle d'Aosta"){
                     url_param = "Valle d%27Aosta"
                 }
+                friulli_small = ""
+                if (url_param =="Friuli Venezia Giulia"){
+                    friulli_small = "style='font-size: 20pt' "
+                }
                 diff_total_case = value.list_cases[value.list_cases.length - 1] - value.list_cases[value.list_cases.length - 2]
                 if ( regio_c == 0){
                     region_pair += "<div class='row'>"
                         region_pair += "<div class='col-sm-6 container'>"+
                                             "<div class='square_container'>" +
                                                 "<div class='data_text_container'> " +
-                                                    "<div class='header_data'>" +
+                                                    "<div class='header_data'"+friulli_small+">" +
                                                         key+ 
                                                     "</div>" +
                                                     "<div class='data'>" +
