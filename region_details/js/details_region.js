@@ -199,7 +199,7 @@ window.onload = function () {
             change = list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]
             var sign = "+"
             if (change < 0) {
-                sign = "-"
+                sign = ""
             }
 
             document.getElementById("data_terapia_change").innerHTML = list_terapia_intensiva[list_terapia_intensiva.length - 1] + " (" + sign + + String(list_terapia_intensiva[list_terapia_intensiva.length - 1] - list_terapia_intensiva[list_terapia_intensiva.length - 2]) + ")"
@@ -233,7 +233,7 @@ window.onload = function () {
             change = list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]
             var sign = "+"
             if (change < 0) {
-                sign = "-"
+                sign = ""
             }
 
             document.getElementById("data_domiciliare_change").innerHTML = list_domiciliare[list_domiciliare.length - 1] + " (" + sign + String(list_domiciliare[list_domiciliare.length - 1] - list_domiciliare[list_domiciliare.length - 2]) + ")"

@@ -269,7 +269,7 @@ window.onload = function () {
             // new positive cases
             sign="+"
             if (list_nuovi_positivi[list_nuovi_positivi.length - 1]<0){
-                sign = "-"
+                sign = ""
             }
             document.getElementById("nuovi_pos_change").innerHTML = "("+sign + list_nuovi_positivi[list_nuovi_positivi.length - 1] + ")"
 
